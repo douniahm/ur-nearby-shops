@@ -30,9 +30,7 @@ public class UserRestController {
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public User save(@RequestBody User User) { // requestbody cad il cherche dans le body de la requette il
-												// requepère l objet sous format json et le stock dans
-												// User c
+	public User save(@RequestBody User User) { 
 		return repo.save(User);
 	}
 
