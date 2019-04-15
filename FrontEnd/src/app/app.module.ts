@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
+import { ShopComponent } from './shop/shop.component';
 
 
 @Injectable()
@@ -21,7 +22,8 @@ export class XhrInterceptor implements HttpInterceptor {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,

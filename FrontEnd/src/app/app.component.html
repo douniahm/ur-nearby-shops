@@ -1,4 +1,20 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" >  <button routerLink="/login"  class="btn btn-info spacer" [hidden]="this.loginService.isAuthenticated" class="btn btn-info spacer">Login</button>
+  </a>
+  <a class="nav-item nav-link">  <button (click)="OnlogOut()" class="btn btn-info spacer" [hidden]="!this.loginService.isAuthenticated">Log Out</button></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link"><button routerLink="/shops" class="btn btn-info spacer">Shops</button></a>
+        <a class="nav-item nav-link"><button routerLink="/likedShops" class="btn btn-info spacer">Liked Shopes</button>
+        </a>
+    </div>
+  </div>
+</nav>
 <router-outlet>
 
 </router-outlet>
-
