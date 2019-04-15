@@ -17,7 +17,7 @@ public class BackEndApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(BackEndApplication.class, args);
 
-		ShopRepository srepo = ctx.getBean(ShopRepository.class);
+	/*	ShopRepository srepo = ctx.getBean(ShopRepository.class);
 		UserRepository urepo = ctx.getBean(UserRepository.class);
 
 		urepo.save(new User("user1", "123"));
@@ -29,7 +29,7 @@ public class BackEndApplication {
 		urepo.findAll().forEach(c -> {
 			System.out.println(c.getLogin());
 			
-		});
+		});*/
 	}
 
 }
