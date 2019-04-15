@@ -51,7 +51,6 @@ public class UserRestController {
 		return new User("User successfully authenticated");
 	}
 
-
 }
 
  
