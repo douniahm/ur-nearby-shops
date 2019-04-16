@@ -1,0 +1,32 @@
+<div class="container spacer">
+  <h1 class="title">Shops You Liked</h1>
+
+  <div class="form-group">
+      <input type="text" [(ngModel)]="motCle" placeholder="search.."/>
+      <button class="btn " (click)="doSearch()"><img src="https://img.icons8.com/ios/50/000000/google-web-search.png"></button> <!--logo of search-->
+    </div>
+
+  <div class="card-columns">
+    <div class="card" *ngFor="let shop of LikedShopPages">
+      <div class="card-body">
+          <div class="card-title">
+            <p class="restaurantName">{{shop.nom}}</p> {{shop.distance}}Km
+            </div>
+          <p class="card-text">
+              {{shop.email}} <br> {{shop.tel}}
+          </p>
+         <a (click)="onUnlike(shop)" class="btn clickable"><img alt="dislike" src="https://img.icons8.com/ios/50/000000/thumbs-up-down.png"></a>
+          <a (click)="onDislike(shop)" class="btn clickable"><img alt="unlike" src="https://img.icons8.com/ios/50/000000/poor-quality-filled.png"></a>
+         <!--<a (click)="onDelete(r)" class="clickable" class="btn btn-danger">Delete</a>-->
+        </div>
+    </div>
+
+  </div>
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item "  [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages; let i = index">
+        <a class="page-link clickable"  (click)="gotoPage(i)">{{i}}</a>
+      </li>
+    </ul>
+  </nav>
+</div>

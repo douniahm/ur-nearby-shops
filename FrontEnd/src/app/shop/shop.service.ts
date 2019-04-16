@@ -60,7 +60,7 @@ export class ShopService implements OnInit{
   }
 
   getShops(motCle:string, page:number, size:number){
-    return this.http.get("http://localhost:8088/chercherShops?mc="+motCle+"&size="+size+"&page="+page,);
+    return this.http.get("http://localhost:8088/user/shops?mc="+motCle+"&size="+size+"&page="+page,);
   }
 
   getShop(id:number){
@@ -79,6 +79,6 @@ export class ShopService implements OnInit{
     let password='shops'
 
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.http.delete("http://localhost:8088/shops/"+id,{headers});
+    return this.http.delete("http://localhost:8088/user/shops/"+id,{headers});
   }
 }
