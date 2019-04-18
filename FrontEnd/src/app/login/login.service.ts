@@ -3,6 +3,8 @@ import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { CanActivate } from '@angular/router/src/utils/preactivation';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import * as moment  from 'moment';
+
 
 
 @Injectable({
@@ -25,30 +27,39 @@ export class LoginService implements CanActivate, OnInit  {
   }
   return log;
 }
-authenticate(username, password) {
-  const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-  return this.http.get('http://localhost:8088/validateLogin', {headers}).pipe(
-   map(
-     userData => {
-      sessionStorage.setItem('username', username);
-      this.isAuthenticated = true;
-      return userData;
-     }
-   )
-
-  );
+authenticate(user) {
+  return this.http.post("http://localhost:8088/api/login", user, {observe: 'response'})
+  .pipe(
+    map(
+      res => this.setSession(res),
+      err => err
+    ));
 }
 
+private setSession(authResult) {
+  if (authResult.status == 200) {
+    const id_token = authResult.headers.get("Authorization");
+    const expires_at = authResult.headers.get("expiresAt");
+    const expiresAt = moment().add(expires_at, 'second');
+    localStorage.setItem('id_token', id_token);
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+    this.router.navigate(['/shops']);
+  }
+}
 isUserLoggedIn() {
-  const user = sessionStorage.getItem('username');
-  console.log(user);
-  return !(user === null);
+   return moment().isBefore(this.getExpiration());
+}
+
+getExpiration() {
+  const expiration = localStorage.getItem("expires_at");
+  const expiresAt = JSON.parse(expiration);
+  return moment(expiresAt);
 }
 
 logOut() {
-  sessionStorage.removeItem('username');
-  sessionStorage.clear();
-  this.isAuthenticated = false;
+  localStorage.removeItem("id_token");
+  localStorage.removeItem("expires_at");
+  this.router.navigate(['/login']);
 }
 }
 

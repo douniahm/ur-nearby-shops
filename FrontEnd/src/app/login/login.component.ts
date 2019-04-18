@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from './login.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +18,12 @@ export class LoginComponent implements OnInit{
   }
 
   ngOnInit() {
-    if(this.loginService.isUserLoggedIn()==true)
-      this.router.navigate(['/shops'])
+   // if(this.loginService.isUserLoggedIn()==true)
+     // this.router.navigate(['/shops'])
   }
 
   onLogin() {
-    (this.loginService.authenticate(this.username, this.password).subscribe(
+    (this.loginService.authenticate(new User(this.username, this.password)).subscribe(
       data => {
         this.router.navigate(['/shops'])
         this.invalidLogin = false
