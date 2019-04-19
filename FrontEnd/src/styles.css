@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/dist/css/bootstrap.min.css';
 .spacer{
-  pading: 30px;
+  padding: 30px;
 }
 .clickable{
   cursor: pointer;
@@ -15,4 +15,14 @@
   text-shadow: 2px 2px rgb(223, 219, 219);
   font-weight: bold;
   text-transform: capitalize;
+}
+.shopName{
+  font-size: 25px;
+  color: #2398AB;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+a{
+  margin: 6px;
 }
