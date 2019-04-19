@@ -1,32 +1,16 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { CanActivate } from '@angular/router/src/utils/preactivation';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import * as moment  from 'moment';
-
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService implements CanActivate, OnInit  {
-  path: ActivatedRouteSnapshot[];
-  route: ActivatedRouteSnapshot;
-  isAuthenticated = false;
+export class LoginService  {
 
   constructor( public router: Router, private http: HttpClient) { }
 
-  ngOnInit() {
-    if(this.isUserLoggedIn() == true) this.isAuthenticated = true;
-  }
-  canActivate() {
-    const log = this.isUserLoggedIn();
-     if (log == false) {
-      this.router.navigate(['login']);
-  }
-  return log;
-}
 authenticate(user) {
   return this.http.post("http://localhost:8088/api/login", user, {observe: 'response'})
   .pipe(
@@ -56,7 +40,7 @@ getExpiration() {
   return moment(expiresAt);
 }
 
-logOut() {
+logout() {
   localStorage.removeItem("id_token");
   localStorage.removeItem("expires_at");
   this.router.navigate(['/login']);
