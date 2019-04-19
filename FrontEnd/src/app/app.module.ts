@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { ShopComponent } from './shop/shop.component';
 import { LikedShopsComponent } from './liked-shops/liked-shops.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @Injectable()
@@ -25,7 +26,8 @@ export class XhrInterceptor implements HttpInterceptor {
     AppComponent,
     LoginComponent,
     ShopComponent,
-    LikedShopsComponent
+    LikedShopsComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
