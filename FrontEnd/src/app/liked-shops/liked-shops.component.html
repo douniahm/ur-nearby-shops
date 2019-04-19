@@ -3,7 +3,7 @@
 
   <div class="form-group">
       <input type="text" [(ngModel)]="motCle" placeholder="search.."/>
-      <button class="btn " (click)="doSearch()"><img src="https://img.icons8.com/ios/50/000000/google-web-search.png"></button> <!--logo of search-->
+      <button class="btn " (click)="onSearch()"><img src="https://img.icons8.com/ios/50/000000/google-web-search.png"></button> <!--logo of search-->
     </div>
 
   <div class="card-columns">
@@ -17,7 +17,6 @@
           </p>
          <a (click)="onUnlike(shop)" class="btn clickable"><img alt="unlike" src="https://img.icons8.com/ios/50/000000/thumbs-up-down.png"></a>
           <a (click)="onDislike(shop)" class="btn clickable"><img alt="dislike" src="https://img.icons8.com/ios/50/000000/poor-quality-filled.png"></a>
-         <!--<a (click)="onDelete(r)" class="clickable" class="btn btn-danger">Delete</a>-->
         </div>
     </div>
 
