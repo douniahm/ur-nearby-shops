@@ -32,7 +32,7 @@ authenticate(user) {
   .pipe(
     map(
       res => this.setSession(res),
-      err => err
+      err => console.log(err)
     ));
 }
 

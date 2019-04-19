@@ -11,9 +11,8 @@ import { LoginService } from './login/login.service';
 export class AppComponent {
   title = 'FrontEnd';
 
-
   constructor(public loginService: LoginService, private http: HttpClient, private router: Router) {
-    this.loginService.authenticate(undefined, undefined);
+    this.loginService.authenticate(undefined);
   }
   OnlogOut() {
    this.loginService.logOut();

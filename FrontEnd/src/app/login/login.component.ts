@@ -23,15 +23,13 @@ export class LoginComponent implements OnInit{
   }
 
   onLogin() {
-    (this.loginService.authenticate(new User(this.username, this.password)).subscribe(
-      data => {
-        this.router.navigate(['/shops'])
-        this.invalidLogin = false
+    this.loginService.authenticate(new User(this.username, this.password)).subscribe(
+      result => {
+        this.invalidLogin = false;
       },
       error => {
-        this.invalidLogin = true
+        this.invalidLogin = true;
       }
-    )
     );
   }
 }

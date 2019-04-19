@@ -19,11 +19,11 @@ export class LikedShopsComponent implements OnInit {
   constructor(private shopService: ShopService) { }
 
   ngOnInit() {
-    this.doSearch();
+    this.onSearch();
   }
 
-  doSearch(){
-    this.shopService.getShops(this.motCle, this.currentPage, this.size)
+  onSearch(){
+    this.shopService.getLikedShops(this.motCle, this.currentPage, this.size)
     .subscribe(res=>{
       this.LikedShopPages = res;
       this.pages = new Array(this.LikedShopPages.totalPages);
@@ -34,20 +34,10 @@ export class LikedShopsComponent implements OnInit {
     });
   }
 
-  gotoPage(i:number){
-    this.currentPage=i;
-    this.doSearch();
-  }
-  getLikedShops(){//UNUSED
-    this.LikedShopPages=this.shopService.getShops(this.motCle, this.size, this.page);
-  }
-  onUnlike(shop:Shop){
-    this.onDislike(shop);
-  }
   onDislike(shop:Shop){
     let confirm = window.confirm("etes vous sûr de vouloir unliker ce shop?");
       if(confirm==true)
-      this.shopService.deleteShop(shop.id)
+      this.shopService.deleteShop(shop)
       .subscribe(data=> {
         alert("Shop supprimé");
         this.LikedShopPages.splice(
@@ -56,4 +46,12 @@ export class LikedShopsComponent implements OnInit {
       }, err=> console.log(err))
   }
 
+  onUnlike(shop:Shop){
+    this.onDislike(shop);
+  }
+
+  gotoPage(i:number){
+    this.currentPage=i;
+    this.onSearch();
+  }
 }
