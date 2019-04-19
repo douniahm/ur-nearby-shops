@@ -18,6 +18,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 
 import shops.dao.ShopRepository;
@@ -33,6 +35,15 @@ public class UserRestController {
 	
 	@Autowired
 	private ShopRepository shopRepo;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder ;
+	
+	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+	 public void signUp(@RequestBody User user) {
+	        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+	        userRepo.save(user);
+	    }
 	
 	@RequestMapping(value = "/like-shop", method = RequestMethod.POST)
 	public ResponseEntity<String> save(@RequestBody Shop shop) {        
