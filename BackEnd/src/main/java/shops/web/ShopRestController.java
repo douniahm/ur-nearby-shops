@@ -30,9 +30,7 @@ public class ShopRestController {
 	private UserRepository userRepo;
 	
 	@RequestMapping(value = "/liked-shops", method = RequestMethod.GET)
-	public Page<Shop> search(@RequestParam(name = "mc", defaultValue = "") String mc,
-			@RequestParam(name = "page", defaultValue = "0") int page,
-			@RequestParam(name = "size", defaultValue = "6") int size) {
+	public Page<Shop> search(@RequestParam(name = "mc", defaultValue = "") String mc) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
 		//Get user's shop
