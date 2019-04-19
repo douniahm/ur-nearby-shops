@@ -40,7 +40,6 @@ export class FakeShopService {
   }
 
   sortShops(shops:any){
-    console.log(shops);
     shops.sort((a,b)=>{
       return a.distance - b.distance;
     });
@@ -48,6 +47,5 @@ export class FakeShopService {
   deleteFakeShop(shop: Shop){
     let index = this.shops.indexOf(shop);
     this.shops.splice(index,1);
-    console.log(this.shops);
   }
 }

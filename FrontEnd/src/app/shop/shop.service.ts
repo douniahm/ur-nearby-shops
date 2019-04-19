@@ -12,7 +12,7 @@ export class ShopService{
   constructor(private http: HttpClient) { }
 
   getLikedShops(motCle:string, page:number, size:number){
-    return this.http.get("http://localhost:8088/liked-shops?mc="+motCle+"&size="+size+"&page="+page,);
+    return this.http.get("http://localhost:8088/liked-shops?mc="+motCle);
   }
 
   saveShop(shop: Shop){
@@ -24,7 +24,7 @@ export class ShopService{
   return this.http.post<Shop>("http://localhost:8088/like-shop", shop, httpOptions)
   .pipe(
     map(
-      res => console.log("res"+ res),
+      res => res,
       err => console.log("err"+err)
     ));
   }
@@ -38,13 +38,12 @@ export class ShopService{
   return this.http.delete<Shop>("http://localhost:8088/unlike-shop/"+shop.id, httpOptions)
   .pipe(
     map(
-      res => console.log("res"+ res),
+      res => res,
       err => console.log("err"+err)
     ));
   }
 
   sortShops(shops:any){
-    console.log(shops);
     shops.sort((a,b)=>{
       return a.distance - b.distance;
     });
