@@ -20,7 +20,7 @@ import shops.entities.Shop;
 
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin( "http://localhost:4200")
 public class ShopRestController {
 	@Autowired //injection
 	private UserRepository userRepo;
