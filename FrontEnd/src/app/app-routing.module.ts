@@ -8,10 +8,10 @@ import { LoginGuardService } from './login/login-guard.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
+  { path: 'shops',  component: ShopComponent, canActivate: [AuthGuardService]},
   { path: 'likedShops',  component: LikedShopsComponent, canActivate: [AuthGuardService]},
   { path: 'login',  component: LoginComponent, canActivate: [LoginGuardService]},
-  { path: 'shops',  component: ShopComponent, canActivate: [AuthGuardService]},
-  { path: 'signup',  component: SignUpComponent},
+  { path: 'signup',  component: SignUpComponent, canActivate: [LoginGuardService]},
   { path: '' , redirectTo: '/login', pathMatch:'full'} ,
 ];
 
