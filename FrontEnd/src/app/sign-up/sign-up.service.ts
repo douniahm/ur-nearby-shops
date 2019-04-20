@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SignUpService {
-
+  isRegistred = false
   constructor(private http: HttpClient, private router: Router) { }
 
   signup(user: User){
@@ -17,6 +17,7 @@ export class SignUpService {
       map(
         res=> {
           this.router.navigate(["/login"])
+          this.isRegistred = true;
         },
         err => {
           console.log(err);

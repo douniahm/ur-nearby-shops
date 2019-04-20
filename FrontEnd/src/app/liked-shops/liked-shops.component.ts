@@ -26,6 +26,7 @@ export class LikedShopsComponent implements OnInit {
     this.shopService.getLikedShops(this.motCle, this.currentPage, this.size)
     .subscribe(res=>{
       this.LikedShopPages = res;
+      this.LikedShopPages;
       this.pages = new Array(this.LikedShopPages.totalPages);
       this.LikedShopPages = this.LikedShopPages.content;
       this.shopService.sortShops(this.LikedShopPages);

@@ -12,7 +12,7 @@ export class LoginService  {
   constructor( public router: Router, private http: HttpClient) { }
 
 authenticate(user) {
-  return this.http.post("http://localhost:8088/api/login", user, {observe: 'response'})
+  return this.http.post("http://localhost:8088/login", user, {observe: 'response'})
   .pipe(
     map(
       res => this.setSession(res),

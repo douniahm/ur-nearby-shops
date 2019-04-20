@@ -1,0 +1,43 @@
+<div class="container spacer">
+
+  <div class="card" >
+    <div class="card-header">Sign Up</div>
+    <div class="card-body">
+      <form [formGroup]="signUpform" (ngSubmit)="onSignUp()">
+        <!-- Login-->
+        <div class="form-group">
+          <label class="control-label">login:</label>
+          <input class="form-control" type="text"  name="login" required formControlName="login">
+        </div>
+
+        <div *ngIf="(signUpform.controls['login'].touched && signUpform.controls['login'].invalid)"
+          class="alert-danger">
+          <div *ngIf="signUpform.controls['login'].errors.required"> Required field</div>
+          <div *ngIf="signUpform.controls['login'].errors.minlength" > At least 3 characters</div>
+        </div>
+        <!-- Password-->
+        <div class="form-group">
+          <label class="control-label">Paswword:</label>
+          <input class="form-control" type="password"  name="password" required formControlName="password">
+        </div>
+
+        <div *ngIf="(signUpform.controls['password'].touched && signUpform.controls['password'].invalid)"
+          class="alert-danger">
+          <div *ngIf="signUpform.controls['password'].errors.required"> Required field</div>
+          <div *ngIf="signUpform.controls['password'].errors.minlength" > At least 6 characters</div>
+        </div>
+        <!-- Confirm Password-->
+        <div class="form-group">
+            <label class="control-label">Confirm Paswword:</label>
+            <input class="form-control" type="password"  name="confirmPassword" required
+            formControlName="confirmPassword">
+        </div>
+        <div *ngIf="(signUpform.controls['confirmPassword'].touched && !signUpform.valid)" class="alert-danger">
+          Mismatch Password
+        </div>
+
+          <button [disabled]="!signUpform.valid" type="submit" class="btn btn-primary">Sign up</button>
+          <a [routerLink]="['/login']" class="btn btn-link">Sign in</a>
+      </form>
+    </div>
+  </div>
