@@ -18,7 +18,7 @@ public class Shop implements Serializable{
 	private Long distance;
 	private String email;
 	private String tel;
-	 @ManyToMany(mappedBy = "shops",  fetch = FetchType.EAGER ) // cascade = CascadeType.ALL,
+	 @ManyToMany(mappedBy = "shops",  fetch = FetchType.LAZY ) // cascade = CascadeType.ALL,
 		private Collection<User> users;
 
 	public Shop() {		

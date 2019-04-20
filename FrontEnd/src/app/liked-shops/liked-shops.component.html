@@ -21,11 +21,5 @@
     </div>
 
   </div>
-  <nav aria-label="...">
-    <ul class="pagination">
-      <li class="page-item "  [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages; let i = index">
-        <a class="page-link clickable"  (click)="gotoPage(i)">{{i}}</a>
-      </li>
-    </ul>
-  </nav>
+
 </div>

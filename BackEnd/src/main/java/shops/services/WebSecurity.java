@@ -15,7 +15,6 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import static shops.services.SecurityConstants.SIGN_UP_URL;
-import static shops.services.SecurityConstants.SIGN_IN_URL;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -30,8 +29,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       // http.cors().and().csrf().disable().authorizeRequests()
-    	 http
+    	http.cors()
+    	 .and()
          .csrf().disable()      
          .httpBasic()
          .and()

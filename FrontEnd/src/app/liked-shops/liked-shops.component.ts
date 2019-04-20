@@ -9,12 +9,7 @@ import { Shop } from '../models/shop';
 })
 export class LikedShopsComponent implements OnInit {
   LikedShopPages: any;
-  pages:Array<any>;
-  //Pagination
-  page : number = 0;
   motCle:string = "";
-  size:number = 1;
-  currentPage: number = 0;
 
   constructor(private shopService: ShopService) { }
 
@@ -23,11 +18,9 @@ export class LikedShopsComponent implements OnInit {
   }
 
   onSearch(){
-    this.shopService.getLikedShops(this.motCle, this.currentPage, this.size)
+    this.shopService.getLikedShops(this.motCle)
     .subscribe(res=>{
       this.LikedShopPages = res;
-      this.LikedShopPages;
-      this.pages = new Array(this.LikedShopPages.totalPages);
       this.LikedShopPages = this.LikedShopPages.content;
       this.shopService.sortShops(this.LikedShopPages);
     }, err =>{
@@ -51,8 +44,4 @@ export class LikedShopsComponent implements OnInit {
     this.onDislike(shop);
   }
 
-  gotoPage(i:number){
-    this.currentPage=i;
-    this.onSearch();
-  }
 }

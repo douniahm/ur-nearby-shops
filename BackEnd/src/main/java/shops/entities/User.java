@@ -12,7 +12,7 @@ public class User implements Serializable{
 	private Long id;
 	private String login;
 	private String password;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="users_shops",joinColumns =
 	@JoinColumn(name = "id_user"),
 	inverseJoinColumns = @JoinColumn(name = "id_shop"))

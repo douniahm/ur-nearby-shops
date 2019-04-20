@@ -11,8 +11,13 @@ export class ShopService{
 
   constructor(private http: HttpClient) { }
 
-  getLikedShops(motCle:string, page:number, size:number){
-    return this.http.get("http://localhost:8088/liked-shops?mc="+motCle);
+  getLikedShops(motCle:string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+      };
+    return this.http.get("http://localhost:8088/liked-shops?mc="+motCle,httpOptions);
   }
 
   saveShop(shop: Shop){
