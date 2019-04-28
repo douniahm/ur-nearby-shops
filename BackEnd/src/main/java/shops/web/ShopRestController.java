@@ -27,6 +27,7 @@ public class ShopRestController {
 	
 	@RequestMapping(value = "/liked-shops", method = RequestMethod.GET)
 	public Page<Shop> search(@RequestParam(name = "mc", defaultValue = "") String mc) {
+		//Get connected user
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
 		//Get user's shop
