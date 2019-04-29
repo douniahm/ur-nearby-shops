@@ -1,7 +1,7 @@
 # Web Coding Challenge
 A Restful application that lists shops nearby. The application is split between:
   - **front-end** : as a single page application using Angular
-  - **back-end** : as a JEE application usin Spring Boot
+  - **back-end** : as a JEE application using Spring Boot
  
 ## Implemented Functionnalities
 * As a User, I can sign up using my login & password
