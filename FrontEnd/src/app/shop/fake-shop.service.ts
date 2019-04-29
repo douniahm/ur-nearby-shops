@@ -11,6 +11,7 @@ export class FakeShopService {
   isAuthenticated = false;
   constructor(private http: HttpClient) { }
 
+  //generate 10 shops to show in home page
   getFakeShops(): Shop[]{
     this.shops = new Array(10)
     .fill(1)
@@ -28,6 +29,7 @@ export class FakeShopService {
     return this.shops;
   }
 
+  //generate one shop to replace desliked  or liked shop
   generateFakeShop(){
     this.shops.push({
       id: 0,
@@ -39,11 +41,13 @@ export class FakeShopService {
     this.sortShops(this.shops);
   }
 
+  //order shops by distance
   sortShops(shops:any){
     shops.sort((a,b)=>{
       return a.distance - b.distance;
     });
   }
+  //delete disliked shop from home page
   deleteFakeShop(shop: Shop){
     let index = this.shops.indexOf(shop);
     this.shops.splice(index,1);

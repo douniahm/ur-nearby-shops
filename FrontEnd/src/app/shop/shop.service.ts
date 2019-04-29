@@ -11,6 +11,7 @@ export class ShopService{
 
   constructor(private http: HttpClient) { }
 
+  //get user's liked shop
   getLikedShops(motCle:string){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -20,6 +21,7 @@ export class ShopService{
     return this.http.get("http://localhost:8088/liked-shops?mc="+motCle,httpOptions);
   }
 
+  //add a shop to user's liked shops
   saveShop(shop: Shop){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -34,6 +36,7 @@ export class ShopService{
     ));
   }
 
+  //remove shop from user's liked shop list
   deleteShop(shop: Shop){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -48,6 +51,7 @@ export class ShopService{
     ));
   }
 
+  //order shops by distance
   sortShops(shops:any){
     shops.sort((a,b)=>{
       return a.distance - b.distance;

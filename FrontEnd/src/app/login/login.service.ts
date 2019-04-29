@@ -11,6 +11,7 @@ export class LoginService  {
 
   constructor( public router: Router, private http: HttpClient) { }
 
+  //authenticate user and stock token in local storage
 authenticate(user) {
   return this.http.post("http://localhost:8088/login", user, {observe: 'response'})
   .pipe(
@@ -20,6 +21,7 @@ authenticate(user) {
     ));
 }
 
+//stock token in local storage after successful authentication
 private setSession(authResult) {
   if (authResult.status == 200) {
     const id_token = authResult.headers.get("Authorization");
@@ -40,6 +42,7 @@ getExpiration() {
   return moment(expiresAt);
 }
 
+/*Log out by removing token from local storage and redirecting user to login view */
 logout() {
   localStorage.removeItem("id_token");
   localStorage.removeItem("expires_at");

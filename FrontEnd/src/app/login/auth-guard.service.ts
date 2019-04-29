@@ -7,6 +7,7 @@ import { CanActivate } from '@angular/router/src/utils/preactivation';
 @Injectable({
   providedIn: 'root'
 })
+/* if the user is not connected, will be redirected to login view*/
 export class AuthGuardService implements CanActivate{
   path: import("@angular/router").ActivatedRouteSnapshot[];
   route: import("@angular/router").ActivatedRouteSnapshot;

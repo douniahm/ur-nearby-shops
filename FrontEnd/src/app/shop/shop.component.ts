@@ -11,6 +11,7 @@ import { FakeShopService } from './fake-shop.service';
 export class ShopComponent implements OnInit {
   shops: Shop[];
   constructor(private shopService: ShopService, private fakeShopService: FakeShopService) { }
+  
   ngOnInit() {
     this.shops = this.fakeShopService.getFakeShops();
   }

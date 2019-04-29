@@ -8,7 +8,7 @@
         <img src="https://img.icons8.com/ios/50/000000/gender-neutral-user-filled.png"> <br>
         You must enter your username and password to login to nearby shops
       </div>
-    <div class="alert alert-danger"  [hidden]="!invalidLogin">
+    <div class="alert alert-danger"  [hidden]="!isInvalidLogin">
         There was a problem logging in. Please try again.
       </div>
       <form role="form" (ngSubmit)="onLogin()">

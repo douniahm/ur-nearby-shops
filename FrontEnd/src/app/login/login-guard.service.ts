@@ -7,6 +7,7 @@ import { CanActivate } from '@angular/router/src/utils/preactivation';
 @Injectable({
   providedIn: 'root'
 })
+/* if the user is already connected, will be redirected automatically to shops view*/
 export class LoginGuardService implements CanActivate{
   path: import("@angular/router").ActivatedRouteSnapshot[];
   route: import("@angular/router").ActivatedRouteSnapshot;

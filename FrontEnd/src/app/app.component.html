@@ -1,9 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="navbar-nav">
-     <!--<a class="nav-item nav-link" >
-        <button routerLink="/login"  class="btn btn-info " [hidden]="this.loginService.isUserLoggedIn()" class="btn btn-info">Login
-        </button></a>-->
       <a class="nav-item nav-link">
         <button (click)="OnlogOut()" class="btn btn-danger " [hidden]="!this.loginService.isUserLoggedIn()">Log Out
         </button></a>

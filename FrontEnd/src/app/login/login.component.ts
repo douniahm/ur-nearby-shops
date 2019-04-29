@@ -13,8 +13,8 @@ import { SignUpService } from '../sign-up/sign-up.service';
 export class LoginComponent implements OnInit{
   username = ''
   password = ''
-  invalidLogin = false;
-  isRegistred = false;
+  isInvalidLogin = false; /* true  in case user enter false credentials during login, we ask him to retry*/
+  isRegistred = false; /* true in case the user has just create an account, we ask him to login */
 
   constructor(private loginService: LoginService, private http: HttpClient, private router: Router,
      private signupService: SignUpService) {
@@ -30,10 +30,10 @@ export class LoginComponent implements OnInit{
   onLogin() {
     this.loginService.authenticate(new User(this.username, this.password)).subscribe(
       result => {
-        this.invalidLogin = false;
+        this.isInvalidLogin = false;
       },
       error => {
-        this.invalidLogin = true;
+        this.isInvalidLogin = true;
       }
     );
   }

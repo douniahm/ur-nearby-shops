@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
 
+  //sign-up form
   signUpform = new FormGroup({
     login : new FormControl('', [Validators.required, Validators.minLength(3)]),
     password : new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -20,10 +21,12 @@ export class SignUpComponent {
   constructor(private signUpService: SignUpService, private router: Router) {
   }
 
+  //validate confirm password
   passwordMatchValidator(g: FormGroup) {
    return g.get('password').value === g.get('confirmPassword').value
        ? null : {'mismatch': true};
  }
+  //sign-up: register new user
   onSignUp(){
     if(this.signUpform.valid)
       this.signUpService.signup(
@@ -34,9 +37,9 @@ export class SignUpComponent {
             console.log(err);
           }
         );
-
   }
 
+  //redirect user to sign in view
   onSignIn(){
     this.router.navigate(['/login'])
   }
