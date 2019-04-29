@@ -29,6 +29,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         setFilterProcessesUrl("/login");
     }
 
+    //analyse user credentials and parse them to authenticationManager
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
@@ -47,6 +48,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         }
     }
 
+    //generate a JWT for a user after being correctly loged in
     @Override
     protected void successfulAuthentication(HttpServletRequest req,
                                             HttpServletResponse res,

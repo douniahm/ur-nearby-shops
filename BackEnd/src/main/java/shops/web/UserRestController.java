@@ -39,12 +39,12 @@ public class UserRestController {
 	@RequestMapping(value = "/like-shop", method = RequestMethod.POST)
 	public ResponseEntity<String> save(@RequestBody Shop shop) {        
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
+        String username = auth.getName(); //get username of the current user
         User user = userRepo.findByLogin(username);
         	if(!user.getShops().contains(shop)) {
-        		Shop added = shopRepo.save(shop);
-                user.getShops().add(added);
-                userRepo.save(user);
+        		Shop added = shopRepo.save(shop); //add shop in database
+                user.getShops().add(added);// add shop in user's liked shops
+                userRepo.save(user); //update
                 return new ResponseEntity<>(HttpStatus.ACCEPTED);
         	}
         	return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
@@ -58,9 +58,9 @@ public class UserRestController {
         User user = userRepo.findByLogin(username);
         Shop shop = shopRepo.findOne(id);
         	if(user.getShops().contains(shop)) {
-                user.getShops().remove(shop);
+                user.getShops().remove(shop);//remove shop from user's liked shops
                 userRepo.save(user);//update user
-        		shopRepo.delete(shop);//delete shop from db
+        		shopRepo.delete(shop);//delete shop from database
                 return new ResponseEntity<>(HttpStatus.ACCEPTED);
         	}
         	return new ResponseEntity<>(HttpStatus.NOT_FOUND);

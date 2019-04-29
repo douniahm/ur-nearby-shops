@@ -12,7 +12,8 @@ public class User implements Serializable{
 	private Long id;
 	private String login;
 	private String password;
-	@ManyToMany(fetch = FetchType.LAZY)
+	//MAny to many relation between entities user and shop
+	@ManyToMany(fetch = FetchType.LAZY) //load user's shops only on demand
 	@JoinTable(name="users_shops",joinColumns =
 	@JoinColumn(name = "id_user"),
 	inverseJoinColumns = @JoinColumn(name = "id_shop"))
@@ -59,14 +60,5 @@ public class User implements Serializable{
 	public String toString() {
 		return "User [id=" + id + ", login=" + login + ", password=" + password + "]";
 	}
-	/*@Id @GeneratedValue
-	private Long id;
-	private String login;
-	private String password;
-	@ManyToMany()
-	@JoinTable(name="users_shops",joinColumns =
-	@JoinColumn(name = "id_user"),
-	inverseJoinColumns = @JoinColumn(name = "id_shop"))
-	private Collection<Shop> shops;*/
 
 }

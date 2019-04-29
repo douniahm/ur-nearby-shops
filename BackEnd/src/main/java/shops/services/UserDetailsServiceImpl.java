@@ -19,6 +19,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.applicationUserRepository = applicationUserRepository;
     }
 
+    /*search user data in database by username and return an instance of this user,
+    spring securitu compare this instance to credentials passed by the user in he login request*/
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         shops.entities.User applicationUser = applicationUserRepository.findByLogin(username);

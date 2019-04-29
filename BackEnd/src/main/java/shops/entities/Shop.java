@@ -18,7 +18,7 @@ public class Shop implements Serializable{
 	private Long distance;
 	private String email;
 	private String tel;
-	 @ManyToMany(mappedBy = "shops",  fetch = FetchType.LAZY ) // cascade = CascadeType.ALL,
+	 @ManyToMany(mappedBy = "shops",  fetch = FetchType.LAZY )
 		private Collection<User> users;
 
 	public Shop() {		
@@ -73,7 +73,4 @@ public class Shop implements Serializable{
 	public String toString() {
 		return "Shop [id=" + id + ", nom=" + nom + ", distance=" + distance + ", email=" + email + ", tel=" + tel + "]";
 	}
-	/*   @ManyToMany(mappedBy = "shops",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Collection<User> users;
-	*/
 }

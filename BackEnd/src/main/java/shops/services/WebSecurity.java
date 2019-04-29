@@ -30,6 +30,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
     
+    /*define public and private ressource
+      in our case, the sign-up url is the only public ressource
+    */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http.cors()
@@ -46,12 +49,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
-  
+    /*load user data and define encrypt method*/
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
+    //allow only request from localhost:4200
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
     	CorsConfiguration configuration = new CorsConfiguration();
