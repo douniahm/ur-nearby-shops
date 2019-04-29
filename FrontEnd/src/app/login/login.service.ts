@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import * as moment  from 'moment';
+import { environment } from '../../environments/environment';
+
+const apiUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,7 @@ export class LoginService  {
 
   //authenticate user and stock token in local storage
 authenticate(user) {
-  return this.http.post("http://localhost:8088/login", user, {observe: 'response'})
+  return this.http.post(apiUrl+"/login", user, {observe: 'response'})
   .pipe(
     map(
       res => this.setSession(res),

@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+
+const apiUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,7 @@ export class SignUpService {
 
   //register a new user
   signup(user: User){
-    return this.http.post("http://localhost:8088/sign-up",user, {observe: 'response'})
+    return this.http.post(apiUrl+"/sign-up",user, {observe: 'response'})
     .pipe(
       map(
         res=> {

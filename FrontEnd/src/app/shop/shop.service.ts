@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Shop } from '../models/shop';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+
+const apiUrl = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +21,7 @@ export class ShopService{
         'Content-Type':  'application/json',
       })
       };
-    return this.http.get("http://localhost:8088/liked-shops?mc="+motCle,httpOptions);
+    return this.http.get(apiUrl+"/liked-shops?mc="+motCle,httpOptions);
   }
 
   //add a shop to user's liked shops
@@ -28,7 +31,7 @@ export class ShopService{
         'Content-Type':  'application/json',
       })
   };
-  return this.http.post<Shop>("http://localhost:8088/like-shop", shop, httpOptions)
+  return this.http.post<Shop>(apiUrl+"/like-shop", shop, httpOptions)
   .pipe(
     map(
       res => res,
@@ -43,7 +46,7 @@ export class ShopService{
         'Content-Type':  'application/json',
       })
   };
-  return this.http.delete<Shop>("http://localhost:8088/unlike-shop/"+shop.id, httpOptions)
+  return this.http.delete<Shop>(apiUrl+"/unlike-shop/"+shop.id, httpOptions)
   .pipe(
     map(
       res => res,
