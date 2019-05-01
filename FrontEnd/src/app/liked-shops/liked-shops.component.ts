@@ -8,7 +8,7 @@ import { Shop } from '../models/shop';
   styleUrls: ['./liked-shops.component.css']
 })
 export class LikedShopsComponent implements OnInit {
-  LikedShopPages: any;
+  LikedShops: any;
   motCle:string = "";
 
   constructor(private shopService: ShopService) { }
@@ -22,31 +22,38 @@ export class LikedShopsComponent implements OnInit {
     /*search in database */
     this.shopService.getLikedShops(this.motCle)
     .subscribe(res=>{
-      this.LikedShopPages = res;
-      this.LikedShopPages = this.LikedShopPages.content;
-      /*order shops*/
-      this.shopService.sortShops(this.LikedShopPages);
+      this.LikedShops = res;
+      this.LikedShops = this.LikedShops.content;
     }, err =>{
       console.log(err);
     });
   }
 
-  /*remove a disliked or unliked shop from liked list*/
+  /*remove a disliked shop from liked list and add it to ddesliked shops in local storage*/
   onDislike(shop:Shop){
-    let confirm = window.confirm("Do you want to remove this shop from your liked list?");
-      if(confirm==true)
-      this.shopService.deleteShop(shop)
-      .subscribe(data=> {
-        alert("Shop deleted");
-        this.LikedShopPages.splice(
-        this.LikedShopPages.indexOf(shop),
-        1)
-      }, err=> console.log(err))
+    this.onUnlike(shop);
+    //get desliked shops
+    let deslikedShops = JSON.parse(localStorage.getItem("deslikedShops"));
+    //add shop to deslikedshops in local storage
+    deslikedShops.push(shop.id+"");
+    //update local storage
+    localStorage.setItem("deslikedShops", JSON.stringify(deslikedShops));
   }
 
-  /*same thing for unlike */
+  /*remove unliked shop from liked shops */
   onUnlike(shop:Shop){
-    this.onDislike(shop);
+    let confirm = window.confirm("Do you want to remove this shop from your liked list?");
+      if(confirm==true)
+      this.shopService.unlikeShop(shop)
+      .subscribe(data=> {
+        alert("Shop removed");
+        this.spliceShop(shop);
+      }, err=> console.log(err))
   }
+   spliceShop(shop: Shop){
+    let index = this.LikedShops.indexOf(shop);
+    this.LikedShops.splice(index,1);
+  }
+
 
 }

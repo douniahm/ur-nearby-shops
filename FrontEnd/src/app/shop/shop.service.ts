@@ -50,7 +50,7 @@ export class ShopService{
   }
 
   //remove shop from user's liked shop list
-  deleteShop(shop: Shop){
+  unlikeShop(shop: Shop){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -62,18 +62,5 @@ export class ShopService{
       res => res,
       err => console.log("err"+err)
     ));
-  }
-
-  //order shops by distance
-  sortShops(shops:any){
-    shops.sort((a,b)=>{
-      return a.distance - b.distance;
-    });
-  }
-
-  //delete disliked shop from home page
-  deleteFakeShop(shop: Shop){
-    let index = this.shops.indexOf(shop);
-    this.shops.splice(index,1);
   }
 }

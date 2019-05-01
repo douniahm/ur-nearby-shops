@@ -12,9 +12,12 @@ export class ShopComponent implements OnInit {
   page:number = 0;
   totalPages:Array<any>;
   currentPage: number=0;
+  deslikedShops = [];//array containing ids of desliked shops
   constructor(private shopService: ShopService) { }
 
   ngOnInit() {
+    //get desliked shops
+    this.deslikedShops = JSON.parse(localStorage.getItem("deslikedShops"));
     this.doSearch();
   }
 
@@ -25,6 +28,7 @@ export class ShopComponent implements OnInit {
       this.shops = res;
       this.totalPages = new Array(this.shops.totalPages);
       this.shops = this.shops.content;
+      this.filtreShops();//remove desliked shops
     }, err =>{
       console.log(err);
     });
@@ -35,15 +39,23 @@ export class ShopComponent implements OnInit {
     this.shopService.likeShop(shop)
    .subscribe(data =>{
      //remove liked shop from home page
-     this.deleteShopFromHome(shop);
+     this.spliceShop(shop);
   }, err=>{
     console.log(err);
   })
   }
 
   onDislike(shop:Shop){
+    //get desliked shops
+    this.deslikedShops = JSON.parse(localStorage.getItem("deslikedShops"));
+    if(this.deslikedShops.indexOf(shop.id+"") == -1){
+    //add shop to deslikedshops in local storage
+    this.deslikedShops.push(shop.id+"");
+    //update local storage
+    localStorage.setItem("deslikedShops", JSON.stringify(this.deslikedShops));
     //remove liked shop from home page
-    this.deleteShopFromHome(shop);
+    this.spliceShop(shop);
+  }
   }
 
   gotoPage(i:number){
@@ -52,8 +64,17 @@ export class ShopComponent implements OnInit {
   }
 
   //delete disliked or liked shop from home page
-  deleteShopFromHome(shop: Shop){
+  spliceShop(shop: Shop){
     let index = this.shops.indexOf(shop);
     this.shops.splice(index,1);
+  }
+
+  //delete desliked shops from shop list
+  filtreShops(){
+    this.shops.forEach(e => {
+      if( this.deslikedShops.indexOf(e.id+"")!=(-1)) {
+        this.spliceShop(e);
+      }
+    });
   }
 }

@@ -30,8 +30,10 @@ private setSession(authResult) {
     const id_token = authResult.headers.get("Authorization");
     const expires_at = authResult.headers.get("expiresAt");
     const expiresAt = moment().add(expires_at, 'second');
+    const deslikedShops = ["0"];
     localStorage.setItem('id_token', id_token);
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem("deslikedShops", JSON.stringify(deslikedShops));
     this.router.navigate(['/shops']);
   }
 }
@@ -49,6 +51,7 @@ getExpiration() {
 logout() {
   localStorage.removeItem("id_token");
   localStorage.removeItem("expires_at");
+  localStorage.removeItem("deslikedShops");
   this.router.navigate(['/login']);
 }
 }
