@@ -1,7 +1,10 @@
 package shops.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -18,6 +21,19 @@ public class User implements Serializable{
 	@JoinColumn(name = "id_user"),
 	inverseJoinColumns = @JoinColumn(name = "id_shop"))
 	private Collection<Shop> shops;
+	//list containing id of each liked shop, used for not displaying liked shops in home page
+	@Transient
+	List<Long> likedShopsIds = new ArrayList<>();
+	public List<Long> getLikedShopsIds() {
+		this.likedShopsIds.add((long)0);
+		this.getShops().forEach(e->{
+			this.likedShopsIds.add(e.getId());
+		});
+		return likedShopsIds;
+	}
+	public void setLikedShopsIds(List<Long> likedShopsIds) {
+		this.likedShopsIds = likedShopsIds;
+	}
 	public User() {
 		
 	}

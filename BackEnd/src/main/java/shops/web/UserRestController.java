@@ -42,8 +42,7 @@ public class UserRestController {
         String username = auth.getName(); //get username of the current user
         User user = userRepo.findByLogin(username);
         	if(!user.getShops().contains(shop)) {
-        		Shop added = shopRepo.save(shop); //add shop in database
-                user.getShops().add(added);// add shop in user's liked shops
+                user.getShops().add(shop);// add shop in user's liked shops
                 userRepo.save(user); //update
                 return new ResponseEntity<>(HttpStatus.ACCEPTED);
         	}
@@ -60,7 +59,6 @@ public class UserRestController {
         	if(user.getShops().contains(shop)) {
                 user.getShops().remove(shop);//remove shop from user's liked shops
                 userRepo.save(user);//update user
-        		shopRepo.delete(shop);//delete shop from database
                 return new ResponseEntity<>(HttpStatus.ACCEPTED);
         	}
         	return new ResponseEntity<>(HttpStatus.NOT_FOUND);

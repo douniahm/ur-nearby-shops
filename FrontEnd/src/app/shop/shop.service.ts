@@ -14,6 +14,16 @@ export class ShopService{
 
   constructor(private http: HttpClient) { }
 
+  //get shops
+  getShops(page:number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+      };
+    return this.http.get(apiUrl+"/shops?page="+page);
+  }
+
   //get user's liked shop
   getLikedShops(motCle:string){
     const httpOptions = {
@@ -25,7 +35,7 @@ export class ShopService{
   }
 
   //add a shop to user's liked shops
-  saveShop(shop: Shop){
+  likeShop(shop: Shop){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -59,5 +69,11 @@ export class ShopService{
     shops.sort((a,b)=>{
       return a.distance - b.distance;
     });
+  }
+
+  //delete disliked shop from home page
+  deleteFakeShop(shop: Shop){
+    let index = this.shops.indexOf(shop);
+    this.shops.splice(index,1);
   }
 }

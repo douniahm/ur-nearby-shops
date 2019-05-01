@@ -2,6 +2,7 @@
   <h1 class="title">Shops Around You!</h1>
   <div class="card-columns">
     <div class="card" *ngFor="let shop of shops">
+      <img  src="{{shop.image}}" class="card-img-top">
       <div class="card-body">
           <div class="card-title">
             <p class="shopName">{{shop.nom}}</p> {{shop.distance}}Km
@@ -9,10 +10,18 @@
           <p class="card-text">
               {{shop.email}} <br> {{shop.tel}}
           </p>
-         <a alt="like" (click)="onLike(shop)" class="btn btn-info clickable"><img src="https://img.icons8.com/ios/50/000000/good-quality-filled.png"></a>
+          <a alt="like" (click)="onLike(shop)" class="btn btn-info clickable"><img src="https://img.icons8.com/ios/50/000000/good-quality-filled.png"></a>
           <a alt="unlike" (click)="onDislike(shop)" class="btn btn-danger clickable"><img src="https://img.icons8.com/ios/50/000000/poor-quality-filled.png"></a>
         </div>
     </div>
   </div>
+<!--Pagination-->
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item "  [ngClass]="{'active':i==currentPage}" *ngFor="let p of totalPages; let i = index">
+        <a class="page-link clickable"  (click)="gotoPage(i)">{{i}}</a>
+      </li>
+    </ul>
+  </nav>
 
 </div>

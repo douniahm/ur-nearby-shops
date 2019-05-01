@@ -3,7 +3,6 @@ package shops.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,25 +17,34 @@ public class Shop implements Serializable{
 	private Long distance;
 	private String email;
 	private String tel;
+	private String image;
 	 @ManyToMany(mappedBy = "shops",  fetch = FetchType.LAZY )
 		private Collection<User> users;
 
 	public Shop() {		
 	}
-	public Shop (String nom, Long distance, String email, String tel) {
+	public Shop (String nom, Long distance, String email, String tel, String image) {
 		super();
 		this.nom = nom;
 		this.distance = distance;
 		this.email = email;
 		this.tel = tel;
+		this.image = image;
 	}
-	public Shop(Long id, String nom, Long distance, String email, String tel) {
+	public Shop(Long id, String nom, Long distance, String email, String tel, String image) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.distance = distance;
 		this.email = email;
 		this.tel = tel;
+		this.image = image;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public Long getId() {
 		return id;

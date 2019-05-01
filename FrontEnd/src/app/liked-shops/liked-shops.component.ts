@@ -39,8 +39,8 @@ export class LikedShopsComponent implements OnInit {
       .subscribe(data=> {
         alert("Shop deleted");
         this.LikedShopPages.splice(
-          this.LikedShopPages.indexOf(shop),1
-        )
+        this.LikedShopPages.indexOf(shop),
+        1)
       }, err=> console.log(err))
   }
 

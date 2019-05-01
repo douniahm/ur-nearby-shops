@@ -4,4 +4,5 @@ export class Shop{
   distance: number;
   email:string="";
   tel:number=0;
+  image: string ="";
 }

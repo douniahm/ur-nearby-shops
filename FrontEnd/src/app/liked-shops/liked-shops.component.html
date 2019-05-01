@@ -8,6 +8,7 @@
 
   <div class="card-columns">
     <div class="card" *ngFor="let shop of LikedShopPages">
+      <img  src="{{shop.image}}" class="card-img-top">
       <div class="card-body">
           <div class="card-title">
             <p class="shopName">{{shop.nom}}</p> {{shop.distance}}Km
