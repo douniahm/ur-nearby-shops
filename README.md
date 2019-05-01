@@ -20,5 +20,6 @@ git clone https://github.com/douniahm/ur-nearby-shops
 ## Built With
 - Spring Boot
 - Angular
+- MySql
 
 
