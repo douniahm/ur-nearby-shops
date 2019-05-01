@@ -16,25 +16,25 @@ A Restful application that lists nearby shops. The application is split between:
 ## Running The Application
 * In MySql, create a database named: **ur_nearbyshops**
 * Download and unzip, or clone the app using Git:
-'''
+```
 git clone https://github.com/douniahm/ur-nearby-shops
-'''
+```
 ### Spring Boot
 * Import Backend using an IDE, for Eclipse:
-'''
+```
 file -> import -> maven existing project
-'''
+```
 Then Execute as Spring Boot App
-* In MySql,in shop table, import **shop.sql** from [here](shop.sql)
+* In MySql, in shop table, import **shop.sql** from [here](shop.sql)
 
 ### Angular 
-'''
+```
 cd FrontEnd
 npm install 
 ng build
 ng build --prod
 ng serve
-'''
+```
 
 ## Built With
 - Spring Boot1.5, Java 1.8
