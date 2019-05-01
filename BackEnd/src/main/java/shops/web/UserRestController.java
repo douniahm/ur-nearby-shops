@@ -19,7 +19,6 @@ import shops.entities.Shop;
 import shops.entities.User;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
 public class UserRestController {
 	@Autowired //injection
 	private UserRepository userRepo;
@@ -50,7 +49,7 @@ public class UserRestController {
 	}
 	
 	
-	@RequestMapping(value = "/unlike-shop/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/unlike-shop/{id}", method = RequestMethod.POST)
 	public  ResponseEntity<String> delete(@PathVariable Long id) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();

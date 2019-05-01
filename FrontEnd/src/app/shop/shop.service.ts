@@ -56,7 +56,7 @@ export class ShopService{
         'Content-Type':  'application/json',
       })
   };
-  return this.http.delete<Shop>(apiUrl+"/unlike-shop/"+shop.id, httpOptions)
+  return this.http.post<Shop>(apiUrl+"/unlike-shop/"+shop.id, httpOptions)
   .pipe(
     map(
       res => res,
