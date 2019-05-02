@@ -15,16 +15,16 @@ A Restful application that lists nearby shops. The application is split between:
 
 ## Demo
 * Sign up
-(https://user-images.githubusercontent.com/36522492/57050814-56d12a80-6c76-11e9-8050-e675383d8802.PNG)
+![1](https://user-images.githubusercontent.com/36522492/57050814-56d12a80-6c76-11e9-8050-e675383d8802.PNG)
 ---
 * Sign in
-(https://user-images.githubusercontent.com/36522492/57050819-5c2e7500-6c76-11e9-95f7-df5fe85d5cc3.PNG)
+![2](https://user-images.githubusercontent.com/36522492/57050819-5c2e7500-6c76-11e9-95f7-df5fe85d5cc3.PNG)
 ---
 * Main page
-(https://user-images.githubusercontent.com/36522492/57050822-5fc1fc00-6c76-11e9-960e-363dff06e366.PNG)
+![3](https://user-images.githubusercontent.com/36522492/57050822-5fc1fc00-6c76-11e9-960e-363dff06e366.PNG)
 ---
 * Liked shops
-(https://user-images.githubusercontent.com/36522492/57050828-69e3fa80-6c76-11e9-8c54-1f17c2fb2c3c.PNG)
+![4](https://user-images.githubusercontent.com/36522492/57050828-69e3fa80-6c76-11e9-8c54-1f17c2fb2c3c.PNG)
 
 ## Running The Application
 * In MySql, create a database named: **ur_nearbyshops**
