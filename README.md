@@ -38,8 +38,7 @@ git clone https://github.com/douniahm/ur-nearby-shops
 file -> import -> maven existing project
 ```
 Then Execute as Spring Boot App
-* In MySql, in shop table, import **shop.sql** from [here](shop.sql)
-
+* Return to MySql, in **ur_nearbyshops** database, import **shop.sql** from [here](shop.sql)
 ### Angular 
 ```
 cd FrontEnd
